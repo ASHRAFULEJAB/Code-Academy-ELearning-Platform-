@@ -2,12 +2,15 @@ import { GoogleAuthProvider } from 'firebase/auth'
 import React, { useState } from 'react'
 import { useContext } from 'react'
 import toast from 'react-hot-toast'
-import { Link } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { CourseContext } from '../../contexts/CourseProvider'
 
 const Login = () => {
-  const { login,loginWithGoogle } = useContext(CourseContext)
+  const { login,loginWithGoogle,setLoader } = useContext(CourseContext)
   const googleProvider = new GoogleAuthProvider();
+  const navigate = useNavigate()
+  const location = useLocation()
+  const from = location?.state?.from?.pathname || '/'
 
 
   const [loginInfo, setLoginInfo] = useState({
@@ -56,7 +59,13 @@ const Login = () => {
       .then(result => {
         const user = result.user
         console.log(user);
-      toast.success('succefully login')
+        if (user?.uid) {
+          navigate(from,{replace:true})
+          toast.success('Yay! You have succefully logeed in')
+        }
+        else {
+          toast.error('Invalid User..Please give Correct Info')
+        }
       })
       .catch(e => {
         console.log(e)
@@ -67,8 +76,14 @@ const Login = () => {
     loginWithGoogle(googleProvider)
       .then(result => {
         const user = result.user
-        console.log(user);
-        toast.success('u r gone')
+        console.log(user);if (user?.uid) {
+          navigate(from,{replace:true})
+          toast.success('Yay! You have succefully logeed in')
+        }
+        else {
+          toast.error('Invalid User..Please give Correct Info')
+        }
+        
       })
       .catch(e => {
         console.log(e)
