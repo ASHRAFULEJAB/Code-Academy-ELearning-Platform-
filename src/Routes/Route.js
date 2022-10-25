@@ -4,6 +4,7 @@ import About from '../pages/About/About'
 import AllCourses from '../pages/AllCourses/AllCourses'
 import CourseDetails from '../pages/AllCourses/courseDetailsPage/CourseDetails'
 import Blogs from '../pages/Blogs/Blogs'
+import CheckOut from '../pages/Checkout/CheckOut'
 import Faq from '../pages/FAQ/Faq'
 import Home from '../pages/Home/Home'
 import Login from '../pages/Login/Login'
@@ -32,6 +33,10 @@ export const router = createBrowserRouter([
         element: <CourseDetails></CourseDetails>,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/courseslist/${params.id}`),
+        },
+        {
+            path: '/checkout',
+            element:<CheckOut></CheckOut>
       },
       {
         path: '/blogs',

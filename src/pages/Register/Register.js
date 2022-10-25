@@ -1,7 +1,11 @@
 import React from 'react'
+import { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import { CourseContext } from '../../contexts/CourseProvider'
 
 const Register = () => {
+    const abc = useContext(CourseContext)
+    console.log(abc)
   return (
     <div
       className='w-full max-w-md lg:ml-96 lg:m-5 mt-5  p-4 rounded-md shadow sm:p-8 dark:bg-gray-900 dark:text-gray-100'
