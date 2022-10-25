@@ -4,21 +4,22 @@ import { Link } from 'react-router-dom'
 const Register = () => {
   return (
     <div
-      className='w-full max-w-md lg:ml-96 m-5  p-4 rounded-md shadow sm:p-8 dark:bg-gray-900 dark:text-gray-100'
+      className='w-full max-w-md lg:ml-96 lg:m-5 mt-5  p-4 rounded-md shadow sm:p-8 dark:bg-gray-900 dark:text-gray-100'
       bis_skin_checked='1'
     >
       <h2 className='mb-3 text-3xl font-semibold text-center'>
         Register to your account
       </h2>
-      <p className='text-sm text-center dark:text-gray-400'>
-        Dont have account?
+          <p className='text-sm text-center dark:text-gray-400'>
+          Already have account?
         <Link
-          to='/register'
+          to='/login'
           rel='noopener noreferrer'
           className='focus:underline hover:underline'
         >
-          Register here
+          LogIn here
         </Link>
+       
       </p>
       <div className='my-6 space-y-4' bis_skin_checked='1'>
         <button
