@@ -1,7 +1,81 @@
-import React from 'react'
+import { GoogleAuthProvider } from 'firebase/auth'
+import React, { useState } from 'react'
+import { useContext } from 'react'
+import toast from 'react-hot-toast'
 import { Link } from 'react-router-dom'
+import { CourseContext } from '../../contexts/CourseProvider'
 
 const Login = () => {
+  const { login,loginWithGoogle } = useContext(CourseContext)
+  const googleProvider = new GoogleAuthProvider();
+
+
+  const [loginInfo, setLoginInfo] = useState({
+    email: '',
+    password: ''
+  })
+  const [error, setError] = useState({
+    email: '',
+    password: ''
+  })
+  const handleEmailChange = (e) => {
+    const email = e.target.value
+
+    if (
+      !/[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
+        email
+      )
+    ) {
+      setError({ ...error, email: 'Please provide a valid email' })
+      setLoginInfo({ ...loginInfo, email: '' })
+    } else {
+      setError({ ...error, email: '' })
+      setLoginInfo({ ...loginInfo, email: e.target.value })
+    }
+  }
+
+  const handlePasswordChange = (e) => {
+    const password = e.target.value
+    if (
+      !/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/.test(
+        password
+      )
+    ) {
+      setError({ ...error, password: 'Please provide Minimum eight characters, at least one letter, one number and one special character' })
+      setLoginInfo({  ...loginInfo, password: '' })
+    } else {
+      setError({ ...error, password: '' })
+      setLoginInfo({ ...loginInfo, password: e.target.value })
+    }
+  }
+
+
+  const handleLoginSubmit = (e) => {
+    e.preventDefault()
+    login(loginInfo.email, loginInfo.password)
+      .then(result => {
+        const user = result.user
+        console.log(user);
+      toast.success('succefully login')
+      })
+      .catch(e => {
+        console.log(e)
+      toast.error('Invalid')
+    })
+  }
+  const handleGoogleLogin = () => {
+    loginWithGoogle(googleProvider)
+      .then(result => {
+        const user = result.user
+        console.log(user);
+        toast.success('u r gone')
+      })
+      .catch(e => {
+        console.log(e)
+        toast.loading('running')
+    })
+  }
+  
   return (
     <div
       className='w-full max-w-md lg:ml-96 lg:m-5 mt-5 p-4 rounded-md shadow sm:p-8 dark:bg-gray-900 dark:text-gray-100'
@@ -21,9 +95,9 @@ const Login = () => {
         </Link>
       </p>
       <div className='my-6 space-y-4' bis_skin_checked='1'>
-        <button
+        <button onClick={handleGoogleLogin}
           aria-label='Login with Google'
-          type='button'
+          type='Submit'
           className='flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400'
         >
           <svg
@@ -68,7 +142,7 @@ const Login = () => {
         <hr className='w-full dark:text-gray-400' />
       </div>
       <form
-        novalidate=''
+        onSubmit={handleLoginSubmit}
         action=''
         className='space-y-8 ng-untouched ng-pristine ng-valid'
       >
@@ -80,11 +154,14 @@ const Login = () => {
             <input
               type='email'
               name='email'
+              onChange={handleEmailChange}
               id='email'
               placeholder='codeacademy@gmail.com'
               className='w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400'
             />
           </div>
+          {error.email && <p className='text-red-800'>{error.email}</p>}
+
           <div className='space-y-2' bis_skin_checked='1'>
             <div className='flex justify-between' bis_skin_checked='1'>
               <label for='password' className='text-sm'>
@@ -101,14 +178,16 @@ const Login = () => {
             <input
               type='password'
               name='password'
+              onChange={handlePasswordChange}
               id='password'
               placeholder='*****'
               className='w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400'
             />
           </div>
+          {error.password && <p className='text-red-800'>{error.password}</p>}
         </div>
         <button
-          type='button'
+          type='submit'
           className='w-full px-8 py-3 font-semibold rounded-md dark:bg-violet-400 dark:text-gray-900'
         >
           Log In
