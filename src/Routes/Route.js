@@ -4,12 +4,18 @@ import AllCourses from "../pages/AllCourses/AllCourses";
 import Blogs from "../pages/Blogs/Blogs";
 import Faq from "../pages/FAQ/Faq";
 import Home from "../pages/Home/Home";
+import Login from "../pages/Login/Login";
+import Register from "../pages/Register/Register";
 
 export const router = createBrowserRouter([
     {
         path: '/',
         element: <Main></Main>,
         children: [
+            {
+                path: '/',
+                element:<Home></Home>
+            },
             {
                 path: '/home',
                 element:<Home></Home>
@@ -33,6 +39,14 @@ export const router = createBrowserRouter([
             {
                 path: '/about',
                 element:<Home></Home>
+            },
+            {
+                path: '/register',
+                element:<Register></Register>
+            },
+            {
+                path: '/login',
+                element:<Login></Login>
             },
         ]
         
