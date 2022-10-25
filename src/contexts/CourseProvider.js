@@ -3,6 +3,7 @@ import { createContext } from 'react'
 import {
   createUserWithEmailAndPassword,
   getAuth,
+  onAuthStateChanged,
   sendEmailVerification,
   signInWithEmailAndPassword,
   signInWithPopup,
@@ -11,11 +12,14 @@ import {
 } from 'firebase/auth'
 import app from '../firebase/firebaseConfig'
 import { useState } from 'react'
+import { useEffect } from 'react'
 
 export const CourseContext = createContext()
 const auth = getAuth(app)
 
 const CourseProvider = ({ children }) => {
+  const [user, setUser] = useState(null)
+
   const createUser = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password)
   }
@@ -37,7 +41,15 @@ const CourseProvider = ({ children }) => {
     return signOut(auth)
   }
 
-  const user = useState('displayName:Amiii')
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser)
+    })
+      return () => {
+          unsubscribe()
+      }
+  }, [])
+
   const courseInfo = {
     user,
     createUser,

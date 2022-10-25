@@ -1,7 +1,19 @@
 import React, { useState } from 'react'
+import { useContext } from 'react'
+import toast from 'react-hot-toast'
 import { Link } from 'react-router-dom'
+import { CourseContext } from '../../contexts/CourseProvider'
+import ReactTooltip from "react-tooltip";
+
 
 const Header = () => {
+  const { user, logOut } = useContext(CourseContext)
+
+  const handleLogout = () => {
+    logOut()
+      .then(() => toast.success('Log out sucessfully'))
+      .catch(() => toast.loading('someting went wrong'))
+  }
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   return (
     <div class='bg-gray-900 sticky top-0'>
@@ -83,6 +95,9 @@ const Header = () => {
                 About Us
               </Link>
             </li>
+            {
+              user?.photoURL ? <div data-tip={user.displayName} data-for='toolTip1' data-place='top'><img  className='h-10 w-10 rounded-3xl' src={user.photoURL} alt="" /><ReactTooltip id="toolTip1" /></div> :
+                
             <li>
               <Link
                 to='/profile'
@@ -93,29 +108,41 @@ const Header = () => {
                 Profile
               </Link>
             </li>
+            }
           </ul>
-          <ul class='flex items-center hidden space-x-8 lg:flex'>
-            <li>
-              <Link
-                to='/register'
-                class='inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-600 hover:bg-purple-900 focus:shadow-outline focus:outline-none'
-                aria-label='Sign up'
-                title='Register'
-              >
-                Register
-              </Link>
-            </li>
-            <li>
-              <Link
-                to='/login'
-                class='inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-600 hover:bg-purple-900 focus:shadow-outline focus:outline-none'
-                aria-label='Sign up'
-                title='Login'
-              >
-                LogIn
-              </Link>
-            </li>
-          </ul>
+          {user?.uid ? (
+            <p className='text-white'>
+              {user?.displayName}{' '}
+              <button className='bg-purple-600 text-white hover:bg-orange-500 p-2 rounded-lg font-bold' onClick={handleLogout}>
+                Logout
+              </button>{' '}
+            </p>
+          ) : (
+            <>
+              <ul class='flex items-center hidden space-x-8 lg:flex'>
+                <li>
+                  <Link
+                    to='/register'
+                    class='inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-600 hover:bg-purple-900 focus:shadow-outline focus:outline-none'
+                    aria-label='Sign up'
+                    title='Register'
+                  >
+                    Register
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to='/login'
+                    class='inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-600 hover:bg-purple-900 focus:shadow-outline focus:outline-none'
+                    aria-label='Sign up'
+                    title='Login'
+                  >
+                    LogIn
+                  </Link>
+                </li>
+              </ul>
+            </>
+          )}
           <div class='lg:hidden'>
             <button
               aria-label='Open Menu'
@@ -248,7 +275,7 @@ const Header = () => {
                         </Link>
                       </li>
                     </ul>
-                    <ul >
+                    <ul>
                       <li className=' mt-3 mb-5'>
                         <Link
                           to='/Register'
