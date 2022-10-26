@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom'
 import { FaPaypal } from 'react-icons/fa'
 
 const CourseInfoDetails = ({ course }) => {
-  console.log(course)
-  const { Description, image, rating, title, total, view } = course
+  // console.log(course)
+  const { Description, image, rating, title, total, view ,id} = course
   return (
     <div
       className='flex flex-col max-w-lg p-6 space-y-6 overflow-hidden rounded-lg shadow-md dark:bg-gray-900 dark:text-gray-100'
@@ -95,7 +95,10 @@ const CourseInfoDetails = ({ course }) => {
           </button>
         </div>
       </div>
+      <Link to={`/single-course-details/${id}`}>
       <button className="bg-purple-500 lg:mx-32 p-5 rounded-lg hover:bg-orange-500 font-bold">Get Premuim Access</button>
+      </Link>
+      
     </div>
   )
 }

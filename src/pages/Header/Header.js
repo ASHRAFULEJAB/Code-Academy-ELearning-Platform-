@@ -3,8 +3,7 @@ import { useContext } from 'react'
 import toast from 'react-hot-toast'
 import { Link } from 'react-router-dom'
 import { CourseContext } from '../../contexts/CourseProvider'
-import ReactTooltip from "react-tooltip";
-
+import ReactTooltip from 'react-tooltip'
 
 const Header = () => {
   const { user, logOut } = useContext(CourseContext)
@@ -95,25 +94,38 @@ const Header = () => {
                 About Us
               </Link>
             </li>
-            {
-              user?.photoURL ? <div data-tip={user.displayName} data-for='toolTip1' data-place='top'><img  className='h-10 w-10 rounded-3xl' src={user.photoURL} alt="" /><ReactTooltip id="toolTip1" /></div> :
-                
-            <li>
-              <Link
-                to='/profile'
-                aria-label='About us'
-                title='Profile'
-                class='font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400'
+            {user?.photoURL ? (
+              <div
+                data-tip={user.displayName}
+                data-for='toolTip1'
+                data-place='top'
               >
-                Profile
-              </Link>
-            </li>
-            }
+                <img
+                  className='h-10 w-10 rounded-3xl'
+                  src={user.photoURL}
+                  alt=''/>
+                <ReactTooltip id='toolTip1' />
+              </div>
+            ) : (
+              <li>
+                <Link
+                  to='/profile'
+                  aria-label='About us'
+                  title='Profile'
+                  class='font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400'
+                >
+                  Profile
+                </Link>
+              </li>
+            )}
           </ul>
           {user?.uid ? (
             <p className='text-white'>
               {user?.displayName}{' '}
-              <button className='bg-purple-600 text-white hover:bg-orange-500 p-2 rounded-lg font-bold' onClick={handleLogout}>
+              <button
+                className='bg-purple-600 text-white hover:bg-orange-500 p-2 rounded-lg font-bold'
+                onClick={handleLogout}
+              >
                 Logout
               </button>{' '}
             </p>

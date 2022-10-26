@@ -6,20 +6,19 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { CourseContext } from '../../contexts/CourseProvider'
 
 const Login = () => {
-  const { login,loginWithGoogle,setLoader } = useContext(CourseContext)
-  const googleProvider = new GoogleAuthProvider();
+  const { login, loginWithGoogle, setLoader } = useContext(CourseContext)
+  const googleProvider = new GoogleAuthProvider()
   const navigate = useNavigate()
   const location = useLocation()
   const from = location?.state?.from?.pathname || '/'
 
-
   const [loginInfo, setLoginInfo] = useState({
     email: '',
-    password: ''
+    password: '',
   })
   const [error, setError] = useState({
     email: '',
-    password: ''
+    password: '',
   })
   const handleEmailChange = (e) => {
     const email = e.target.value
@@ -44,53 +43,54 @@ const Login = () => {
         password
       )
     ) {
-      setError({ ...error, password: 'Please provide Minimum eight characters, at least one letter, one number and one special character' })
-      setLoginInfo({  ...loginInfo, password: '' })
+      setError({
+        ...error,
+        password:
+          'Please provide Minimum eight characters, at least one letter, one number and one special character',
+      })
+      setLoginInfo({ ...loginInfo, password: '' })
     } else {
       setError({ ...error, password: '' })
       setLoginInfo({ ...loginInfo, password: e.target.value })
     }
   }
 
-
   const handleLoginSubmit = (e) => {
     e.preventDefault()
     login(loginInfo.email, loginInfo.password)
-      .then(result => {
+      .then((result) => {
         const user = result.user
-        console.log(user);
+        console.log(user)
         if (user?.uid) {
-          navigate(from,{replace:true})
+          navigate(from, { replace: true })
           toast.success('Yay! You have succefully logeed in')
-        }
-        else {
+        } else {
           toast.error('Invalid User..Please give Correct Info')
         }
       })
-      .catch(e => {
+      .catch((e) => {
         console.log(e)
-      toast.error('Invalid')
-    })
+        toast.error('Invalid')
+      })
   }
   const handleGoogleLogin = () => {
     loginWithGoogle(googleProvider)
-      .then(result => {
+      .then((result) => {
         const user = result.user
-        console.log(user);if (user?.uid) {
-          navigate(from,{replace:true})
+        console.log(user)
+        if (user?.uid) {
+          navigate(from, { replace: true })
           toast.success('Yay! You have succefully logeed in')
-        }
-        else {
+        } else {
           toast.error('Invalid User..Please give Correct Info')
         }
-        
       })
-      .catch(e => {
+      .catch((e) => {
         console.log(e)
         toast.loading('running')
-    })
+      })
   }
-  
+
   return (
     <div
       className='w-full max-w-md lg:ml-96 lg:m-5 mt-5 p-4 rounded-md shadow sm:p-8 dark:bg-gray-900 dark:text-gray-100'
@@ -100,7 +100,7 @@ const Login = () => {
         Login to your account
       </h2>
       <p className='text-sm text-center dark:text-gray-400'>
-      Dont have account?
+        Dont have account?
         <Link
           to='/register'
           rel='noopener noreferrer'
@@ -110,7 +110,8 @@ const Login = () => {
         </Link>
       </p>
       <div className='my-6 space-y-4' bis_skin_checked='1'>
-        <button onClick={handleGoogleLogin}
+        <button
+          onClick={handleGoogleLogin}
           aria-label='Login with Google'
           type='Submit'
           className='flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400'

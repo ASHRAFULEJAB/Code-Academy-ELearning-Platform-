@@ -32,13 +32,14 @@ export const router = createBrowserRouter([
       },
       {
         path: '/courseslist/:id',
-        element: <PrivateRoutes><CourseDetails></CourseDetails></PrivateRoutes>,
+        element: <CourseDetails></CourseDetails>,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/courseslist/${params.id}`),
         },
         {
-            path: '/checkout',
-            element:<CheckOut></CheckOut>
+            path: '/single-course-details/:id',
+            element: <PrivateRoutes><CheckOut></CheckOut></PrivateRoutes>,
+            loader:({params})=> fetch(`http://localhost:5000/single-course-details/${params.id}`)
       },
       {
         path: '/blogs',
