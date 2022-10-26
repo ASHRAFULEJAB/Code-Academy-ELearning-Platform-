@@ -6,8 +6,8 @@ const Faq = () => {
       <div className='max-w-xl sm:mx-auto lg:max-w-2xl'>
         <div className='max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12'>
           <div>
-            <p className='inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider text-teal-900 uppercase rounded-full bg-teal-accent-400'>
-              Brand new
+            <p className='inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider text-teal-900 uppercase rounded-full bg-teal-400'>
+              Code Academy
             </p>
           </div>
           <h2 className='max-w-lg mb-6 font-sans text-3xl font-bold leading-none tracking-tight text-gray-900 sm:text-4xl md:mx-auto'>
@@ -34,13 +34,12 @@ const Faq = () => {
                   height='24'
                 />
               </svg>
-              <span className='relative'>The</span>
+              <span className='relative'>Code</span>
             </span>{' '}
-            quick, brown fox jumps over a lazy dog
+            Academy
           </h2>
           <p className='text-base text-gray-700 md:text-lg'>
-            Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-            accusantium doloremque rem aperiam, eaque ipsa quae.
+            Code Academy is a famous onlime learing platfrom where you can learn so many updated technology with fun and easiest way..
           </p>
         </div>
       </div>
@@ -49,83 +48,64 @@ const Faq = () => {
           <div className='space-y-8'>
             <div>
               <p className='mb-4 text-xl font-medium'>
-                The quick, brown fox jumps over a lazy dog?
+              why we need to know programming language?
               </p>
               <p className='text-gray-700'>
-                Space, the final frontier. These are the voyages of the Starship
-                Enterprise. Its five-year mission: to explore strange new
-                worlds.
+              Learning to code not only allows you to give machines instructions, but it also teaches you abstract thinking and problem-solving. In fact, problem-solving skills and creativity are key to becoming a successful computer programmer. 
                 <br />
                 <br />
-                Many say exploration is part of our destiny, but it’s actually
-                our duty to future generations.
+                Of course, you'll also need to know some coding languages to apply your knowledge.
               </p>
             </div>
             <div>
               <p className='mb-4 text-xl font-medium'>
-                The first mate and his Skipper too will do?
+              what we need to learn react js?
               </p>
               <p className='text-gray-700'>
-                Well, the way they make shows is, they make one show. That
-                show's called a pilot.
+                Well, You should know how to write semantic HTML tags, how to write CSS selectors, how to use classes, 
                 <br />
                 <br />
-                Then they show that show to the people who make shows, and on
-                the strength of that one show they decide if they're going to
-                make more shows. Some pilots get picked and become television
-                programs.Some don't, become nothing. She starred in one of the
-                ones that became nothing.
+                how to implement a CSS reset, box model, how to reset to border-box, flexbox, how to write responsive web applications including media queries, and how to build a frontend application using HTML and CSS..
               </p>
             </div>
             <div>
               <p className='mb-4 text-xl font-medium'>
-                Is the Space Pope reptilian!?
+              what we need to learn react native?
               </p>
               <p className='text-gray-700'>
-                A flower in my garden, a mystery in my panties. Heart attack
-                never stopped old Big Bear. I didn't even know we were calling
-                him Big Bear.
+              You should have a basic knowledge of JavaScript. You should have some familiarity with HTML and CSS. Finally, if you have worked with React before, you already know a lot about React Native, and there should be absolutely no problem in working with it.
               </p>
             </div>
           </div>
           <div className='space-y-8'>
             <div>
               <p className='mb-4 text-xl font-medium'>
-                How much money you got on you?
+              what are benefits of learning data structures and algorithms?
               </p>
               <p className='text-gray-700'>
-                The first mate and his Skipper too will do their very best to
-                make the others comfortable in their tropic island nest.
+              Data structures and algorithms (DSA) goes through solutions to standard problems in detail and gives you an insight into how efficient it is to use each one of them. It also teaches you the science of evaluating the efficiency of an algorithm. This enables you to choose the best of various choices.
                 <br />
                 <br />
-                Michael Knight a young loner on a crusade to champion the cause
-                of the innocent. The helpless. The powerless in a world of
-                criminals who operate above the law. Here he comes Here comes
-                Speed Racer. He's a demon on wheels.
+                Data Structure helps you store data IBM MO memory, helps you understand computer memory better. It certainly improves coding skills if you've a sound knowledge ...
               </p>
             </div>
             <div>
               <p className='mb-4 text-xl font-medium'>
-                Galaxies Orion's sword globular star cluster?
+              what is artificial intelligence?
               </p>
               <p className='text-gray-700'>
-                A business big enough that it could be listed on the NASDAQ goes
-                belly up. Disappears!
+              Artificial intelligence (AI) refers to the simulation of human intelligence in machines that are programmed to think like humans and mimic their actions. The term may also be applied to any machine that exhibits traits associated with a human mind such as learning and problem-solving.
                 <br />
                 <br />
-                It ceases to exist without me. No, you clearly don't know who
-                you're talking to, so let me clue you in.
+                The ideal characteristic of artificial intelligence is its ability to rationalize and take actions that have the best chance of achieving a specific goal. A subset of artificial intelligence is ML.
               </p>
             </div>
             <div>
               <p className='mb-4 text-xl font-medium'>
-                When has justice ever been as simple as a rule book?
+              why should we use machine learning??
               </p>
               <p className='text-gray-700'>
-                This is not about revenge. This is about justice. A lot of
-                things can change in twelve years, Admiral. Well, that's
-                certainly good to know. About four years. I got tired of hearing
-                how young I looked.
+              Machine learning is important because it gives enterprises a view of trends in customer behavior and business operational patterns, as well as supports the development of new products. Many of today's leading companies, such as Facebook, Google and Uber, make machine learning a central part of their operations.
               </p>
             </div>
           </div>

@@ -1,4 +1,4 @@
-import { GoogleAuthProvider } from 'firebase/auth'
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth'
 import React, { useState } from 'react'
 import { useContext } from 'react'
 import toast from 'react-hot-toast'
@@ -8,6 +8,7 @@ import { CourseContext } from '../../contexts/CourseProvider'
 const Login = () => {
   const { login, loginWithGoogle, setLoader } = useContext(CourseContext)
   const googleProvider = new GoogleAuthProvider()
+  const githubProvider = new GithubAuthProvider()
   const navigate = useNavigate()
   const location = useLocation()
   const from = location?.state?.from?.pathname || '/'
@@ -90,7 +91,24 @@ const Login = () => {
         toast.loading('running')
       })
   }
-
+  const handleGithub = () => {
+    loginWithGoogle(githubProvider)
+      .then((result) => {
+        const user = result.user
+        console.log(user)
+        if (user?.uid) {
+          navigate(from, { replace: true })
+          toast.success('Yay! You have succefully logeed in')
+        } else {
+          toast.error('Invalid User..Please give Correct Info')
+        }
+      })
+      .catch((e) => {
+        console.log(e)
+        toast.loading('running')
+      })
+  
+}
   return (
     <div
       className='w-full max-w-md lg:ml-96 lg:m-5 mt-5 p-4 rounded-md shadow sm:p-8 dark:bg-gray-900 dark:text-gray-100'
@@ -126,6 +144,7 @@ const Login = () => {
           <p>Login with Google</p>
         </button>
         <button
+          onClick={handleGithub}
           aria-label='Login with GitHub'
           className='flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400'
         >

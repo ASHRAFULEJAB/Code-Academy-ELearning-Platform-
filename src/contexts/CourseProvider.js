@@ -50,7 +50,10 @@ const CourseProvider = ({ children }) => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser)
+     
+        
+        setUser(currentUser)
+  
       setLoader(false)
     })
     return () => {

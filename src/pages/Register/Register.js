@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import { CourseContext } from '../../contexts/CourseProvider'
 
 const Register = () => {
-  const { createUser } = useContext(CourseContext)
+  const { createUser,updateProfileInfo } = useContext(CourseContext)
   const [registerInfo, setRegisterInfo] = useState({
     name: '',
     photoURL: '',
@@ -19,14 +19,38 @@ const Register = () => {
     email: '',
     password: '',
   })
+  
+  
+ 
+  const updateProfileInfoDetails = (name,photoURL) => {
+    
+    const profile = {
+      displayName: name,
+      photoURL:photoURL
+    }
+     console.log(profile)
 
-    const handleSubmit = (e) => {
-    e.preventDefault()
+    updateProfileInfo(profile)
+      .then(result => {
+        const user = result.user
+        console.log(user)
+      toast.success('Your Profile name has been Updated')
+      })
+      .catch(e => {
+      toast.error('profile name cannot be chnaged')
+    })
+    
+  }
+
+  const handleSubmit = (e) => {
+      
+      e.preventDefault()
       createUser(registerInfo.email, registerInfo.password)
           .then(result => {
               const user = result.user;
               console.log(user)
-              toast.success('succesfull')
+            toast.success('succesfull')
+            updateProfileInfoDetails(registerInfo.name,registerInfo.photoURL)
              
           })
           .catch(e => {
@@ -47,7 +71,16 @@ const Register = () => {
   }
 
   const handlePhotoURLChange = (e) => {
-    setRegisterInfo({ ...registerInfo, photoURL: e.target.value })
+    // const photoURL = e.target.value
+    // console.log(photoURL)
+    // if (photoURL.length>10) {
+    //   setError({ ...error, photoURL: 'your photo must have png format' })
+    //   setRegisterInfo({...registerInfo,photoURL:''})
+
+    // } else {
+    //   setError({ ...error, photoURL:''})
+      setRegisterInfo({ ...registerInfo, photoURL: e.target.value })
+    // }
   }
 
   const handleEmailChange = (e) => {

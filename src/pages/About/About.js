@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const About = () => {
     return (
@@ -28,13 +29,12 @@ const About = () => {
                   height="24"
                 />
               </svg>
-              <span className="relative">The</span>
+              <span className="relative">Code</span>
             </span>{' '}
-            quick, brown fox jumps over a lazy dog
+           Academy
           </h2>
           <p className="text-base text-gray-700 md:text-lg">
-            Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-            accusantium doloremque rem aperiam, eaque ipsa quae.
+          Code Academy is a famous onlime learing platfrom where you can learn so many updated technology with fun and easiest way..
           </p>
         </div>
         <div className="grid gap-8 row-gap-12 lg:grid-cols-2">
@@ -54,20 +54,17 @@ const About = () => {
                 />
               </svg>
             </div>
-            <h6 className="mb-3 text-xl font-bold leading-5">A business big</h6>
+            <h6 className="mb-3 text-xl font-bold leading-5">Mission &Vision</h6>
             <p className="mb-3 text-sm text-gray-900">
-              Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-              accusantium rem aperiam, eaque ipsa quae. Sed ut perspiciatis unde
-              omnis iste natus error sit voluptatem accusantium doloremque rem
-              aperiam, eaque ipsa quae.
+              Our mission is to make more skillFull and tech enthusiastic person for serving people.Our vision is to make more fun way learning programing language so that anyone can easily learn any topics.. 
             </p>
-            <a
-              href="/"
+            <Link
+              to="/about"
               aria-label=""
-              className="inline-flex items-center font-semibold transition-colors duration-200 text-deep-purple-accent-400 hover:text-deep-purple-800"
+              className="inline-flex items-center font-semibold transition-colors duration-200 text-purple-700 hover:text-purple-800"
             >
               Learn more
-            </a>
+            </Link>
           </div>
           <div className="max-w-md sm:mx-auto sm:text-center">
             <div className="flex items-center justify-center w-16 h-16 mb-4 rounded-full bg-indigo-50 sm:mx-auto sm:w-24 sm:h-24">
@@ -85,20 +82,21 @@ const About = () => {
                 />
               </svg>
             </div>
-            <h6 className="mb-3 text-xl font-bold leading-5">The quick dog</h6>
+            <h6 className="mb-3 text-xl font-bold leading-5">Company Overview</h6>
             <p className="mb-3 text-sm text-gray-900">
-              Yolo ipsum dolor sit amet, consectetur adipiscing elit. Ut ac
-              suscipit leo. Carpe diem vulputate est nec commodo rutrum.
-              Pellentesque mattis convallis nisi eu and I ain’t stoppin until the
-              swear jar’s full.
+              loaction:Austin,New York
+              <br />
+              Name:Code Academy
+              <br />
+              Established:Since 2000
             </p>
-            <a
-              href="/"
+            <Link
+              to="/about"
               aria-label=""
-              className="inline-flex items-center font-semibold transition-colors duration-200 text-deep-purple-accent-400 hover:text-deep-purple-800"
+              className="inline-flex items-center font-semibold transition-colors duration-200 text-purple-600 hover:text-purple-800"
             >
               Learn more
-            </a>
+            </Link>
           </div>
         </div>
       </div>
