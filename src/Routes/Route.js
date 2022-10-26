@@ -1,4 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom'
+import ErrorPage from '../ErrorPage/ErrorPage'
 import Main from '../layouts/Main'
 import About from '../pages/About/About'
 import AllCourses from '../pages/AllCourses/AllCourses'
@@ -15,6 +16,7 @@ import PrivateRoutes from './PrivateRoutes'
 export const router = createBrowserRouter([
   {
     path: '/',
+    errorElement:<ErrorPage></ErrorPage>,
     element: <Main></Main>,
     children: [
       {

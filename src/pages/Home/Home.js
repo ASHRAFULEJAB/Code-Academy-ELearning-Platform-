@@ -15,17 +15,15 @@ const Home = () => {
               </p>
             </div>
             <h2 className='font-sans text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl sm:leading-none max-w-lg mb-6'>
-              Everything you
+              Code
               <br className='hidden md:block' />
-              can imagine{' '}
+              Academy{' '}
               <span className='inline-block text-deep-purple-accent-400'>
-                is real
+               ...
               </span>
             </h2>
             <p className='text-gray-700 text-base md:text-lg'>
-              Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-              accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-              quae. explicabo.
+            Code Academy is a famous onlime learing platfrom where you can learn so many updated technology with fun and easiest way..
             </p>
           </div>
           <div className='flex items-center space-x-3'>
