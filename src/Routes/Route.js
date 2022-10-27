@@ -16,7 +16,7 @@ import PrivateRoutes from './PrivateRoutes'
 export const router = createBrowserRouter([
   {
     path: '/',
-    errorElement:<ErrorPage></ErrorPage>,
+    errorElement: <ErrorPage></ErrorPage>,
     element: <Main></Main>,
     children: [
       {
@@ -30,18 +30,27 @@ export const router = createBrowserRouter([
       {
         path: '/all-courses',
         element: <AllCourses></AllCourses>,
-        loader: () => fetch('http://localhost:5000/courses'),
+        loader: () => fetch('https://code-academy-server.vercel.app/courses'),
       },
       {
         path: '/courseslist/:id',
         element: <CourseDetails></CourseDetails>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/courseslist/${params.id}`),
-        },
-        {
-            path: '/single-course-details/:id',
-            element: <PrivateRoutes><CheckOut></CheckOut></PrivateRoutes>,
-            loader:({params})=> fetch(`http://localhost:5000/single-course-details/${params.id}`)
+          fetch(
+            `https://code-academy-server.vercel.app/courseslist/${params.id}`
+          ),
+      },
+      {
+        path: '/single-course-details/:id',
+        element: (
+          <PrivateRoutes>
+            <CheckOut></CheckOut>
+          </PrivateRoutes>
+        ),
+        loader: ({ params }) =>
+          fetch(
+            `https://code-academy-server.vercel.app/single-course-details/${params.id}`
+          ),
       },
       {
         path: '/blogs',
@@ -53,7 +62,11 @@ export const router = createBrowserRouter([
       },
       {
         path: '/profile',
-        element: <PrivateRoutes><Profile></Profile></PrivateRoutes>,
+        element: (
+          <PrivateRoutes>
+            <Profile></Profile>
+          </PrivateRoutes>
+        ),
       },
       {
         path: '/about',
