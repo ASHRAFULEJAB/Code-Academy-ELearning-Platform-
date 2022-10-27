@@ -37,30 +37,32 @@ const Register = () => {
       toast.success('Your Profile name has been Updated')
       })
       .catch(e => {
-      toast.error('profile name cannot be chnaged')
+      toast.error('Registration complete..Please log in!!!')
     })
     
   }
 
   const handleSubmit = (e) => {
-      
-      e.preventDefault()
+    e.preventDefault()
+    const name = registerInfo.name
+    const photoURL= registerInfo.photoURL
       createUser(registerInfo.email, registerInfo.password)
           .then(result => {
               const user = result.user;
               console.log(user)
             toast.success('succesfull')
-            updateProfileInfoDetails(registerInfo.name,registerInfo.photoURL)
+            updateProfileInfoDetails(name,photoURL)
              
           })
           .catch(e => {
           toast.error('registration incomplete')
-      })
+          })
+   
   }
 
   const handleNameChange = (e) => {
     const name = e.target.value
-    console.log(name)
+    // console.log(name)
     if (name.length < 8) {
       setError({ ...error, name: 'Your Should have 8 characters' })
       setRegisterInfo({ ...registerInfo, name: '' })
@@ -155,7 +157,7 @@ const Register = () => {
       </div>
       <form
         onSubmit={handleSubmit}
-        novalidate=''
+       
         action=''
         className='space-y-8 ng-untouched ng-pristine ng-valid'
       >
