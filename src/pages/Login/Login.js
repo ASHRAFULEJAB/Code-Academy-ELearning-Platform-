@@ -5,6 +5,7 @@ import toast from 'react-hot-toast'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { CourseContext } from '../../contexts/CourseProvider'
 
+
 const Login = () => {
   const { login, loginWithGoogle, setLoader } = useContext(CourseContext)
   const googleProvider = new GoogleAuthProvider()

@@ -4,6 +4,7 @@ import toast from 'react-hot-toast'
 import { Link } from 'react-router-dom'
 import { CourseContext } from '../../contexts/CourseProvider'
 import ReactTooltip from 'react-tooltip'
+import { FaSignInAlt } from "react-icons/fa";
 
 const Header = () => {
   const { user, logOut } = useContext(CourseContext)
@@ -102,7 +103,7 @@ const Header = () => {
                   title='Profile'
                   class='font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400'
                 >
-                  Profile
+                  <FaSignInAlt/>
                 </Link>
               </li>
             )}
@@ -246,12 +247,12 @@ const Header = () => {
                       </li>
                       <li>
                         <Link
-                          to='/blogs'
+                          to='/about'
                           aria-label='Product pricing'
-                          title='Blogs'
+                          title='about-us'
                           class='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
                         >
-                          Blogs
+                          About Us
                         </Link>
                       </li>
                       <li>
@@ -264,16 +265,30 @@ const Header = () => {
                           FAQ
                         </Link>
                       </li>
-                      <li>
-                        <Link
-                          to='/profile'
-                          aria-label='About us'
-                          title='About us'
-                          class='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
-                        >
-                          Profile
-                        </Link>
-                      </li>
+                      {user?.photoURL ? (
+              <div
+                data-tip={user.displayName}
+                data-for='toolTip1'
+                data-place='top'
+              >
+                <img
+                  className='h-10 w-10 rounded-3xl'
+                  src={user.photoURL}
+                  alt=''/>
+                <ReactTooltip id='toolTip1' />
+              </div>
+            ) : (
+              <li>
+                <Link
+                  to='/profile'
+                  aria-label='About us'
+                  title='Profile'
+                  class='font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400'
+                >
+                  <FaSignInAlt/>
+                </Link>
+              </li>
+            )}
                     </ul>
                     <ul>
                       <li className=' mt-3 mb-5'>
