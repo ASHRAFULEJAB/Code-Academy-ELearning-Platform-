@@ -2,7 +2,7 @@ import React from 'react'
 import { useLoaderData } from 'react-router-dom'
 import Lottie from 'lottie-react'
 import checkout from '../../assets/checkout.json'
-import toast from 'react-hot-toast'
+
 import Swal from 'sweetalert2'
 
 const CheckOut = () => {
@@ -14,11 +14,11 @@ const CheckOut = () => {
     Swal.fire({
       title: 'Congratulation!!You have Enrolled Succesfully',
       showClass: {
-        popup: 'animate__animated animate__fadeInDown'
+        popup: 'animate__animated animate__fadeInDown',
       },
       hideClass: {
-        popup: 'animate__animated animate__fadeOutUp'
-      }
+        popup: 'animate__animated animate__fadeOutUp',
+      },
     })
   }
 

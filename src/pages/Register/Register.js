@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import { CourseContext } from '../../contexts/CourseProvider'
 
 const Register = () => {
-  const { createUser,updateProfileInfo } = useContext(CourseContext)
+  const { createUser, updateProfileInfo } = useContext(CourseContext)
   const [registerInfo, setRegisterInfo] = useState({
     name: '',
     photoURL: '',
@@ -18,53 +18,47 @@ const Register = () => {
     photoURL: '',
     email: '',
     password: '',
-    general: ""
+    general: '',
   })
-  
-  
- 
-  const updateProfileInfoDetails = (name,photoURL) => {
-    
+
+  const updateProfileInfoDetails = (name, photoURL) => {
     const profile = {
       displayName: name,
-      photoURL:photoURL
+      photoURL: photoURL,
     }
-     console.log(profile)
+    console.log(profile)
 
     updateProfileInfo(profile)
-      .then(result => {
+      .then((result) => {
         const user = result.user
         console.log(user)
-      toast.success('Your Profile name has been Updated')
+        toast.success('Your Profile name has been Updated')
       })
-      .catch(e => {
-      toast.error('Registration complete..Please log in!!!')
-    })
-    
+      .catch((e) => {
+        toast.error('Registration complete..Please log in!!!')
+      })
   }
 
   const handleSubmit = (e) => {
     e.preventDefault()
     const name = registerInfo.name
-    const photoURL= registerInfo.photoURL
-      createUser(registerInfo.email, registerInfo.password)
-          .then(result => {
-              const user = result.user;
-              console.log(user)
-            toast.success('succesfull')
-            updateProfileInfoDetails(name,photoURL)
-             
-          })
-          .catch(e => {
-            toast.error('registration incomplete')
-            setError({ ...error, general: e.message });
-          })
-   
+    const photoURL = registerInfo.photoURL
+    createUser(registerInfo.email, registerInfo.password)
+      .then((result) => {
+        const user = result.user
+        console.log(user)
+        toast.success('succesfull')
+        updateProfileInfoDetails(name, photoURL)
+      })
+      .catch((e) => {
+        toast.error('registration incomplete')
+        setError({ ...error, general: e.message })
+      })
   }
 
   const handleNameChange = (e) => {
     const name = e.target.value
-    // console.log(name)
+
     if (name.length < 8) {
       setError({ ...error, name: 'Your Should have 8 characters' })
       setRegisterInfo({ ...registerInfo, name: '' })
@@ -75,16 +69,7 @@ const Register = () => {
   }
 
   const handlePhotoURLChange = (e) => {
-    // const photoURL = e.target.value
-    // console.log(photoURL)
-    // if (photoURL.length>10) {
-    //   setError({ ...error, photoURL: 'your photo must have png format' })
-    //   setRegisterInfo({...registerInfo,photoURL:''})
-
-    // } else {
-    //   setError({ ...error, photoURL:''})
-      setRegisterInfo({ ...registerInfo, photoURL: e.target.value })
-    // }
+    setRegisterInfo({ ...registerInfo, photoURL: e.target.value })
   }
 
   const handleEmailChange = (e) => {
@@ -110,7 +95,11 @@ const Register = () => {
         password
       )
     ) {
-      setError({ ...error, password: 'Please provide Minimum eight characters, at least one letter, one number and one special character' })
+      setError({
+        ...error,
+        password:
+          'Please provide Minimum eight characters, at least one letter, one number and one special character',
+      })
       setRegisterInfo({ ...registerInfo, password: '' })
     } else {
       setError({ ...error, password: '' })
@@ -159,7 +148,6 @@ const Register = () => {
       </div>
       <form
         onSubmit={handleSubmit}
-       
         action=''
         className='space-y-8 ng-untouched ng-pristine ng-valid'
       >
@@ -185,7 +173,6 @@ const Register = () => {
             <input
               type='text'
               name='photo'
-             
               onChange={handlePhotoURLChange}
               id='photo'
               placeholder='Please Enter Your photoURL'
@@ -199,7 +186,6 @@ const Register = () => {
             <input
               type='email'
               name='email'
-             
               onChange={handleEmailChange}
               id='email'
               placeholder='codeacdemy@gamil.com'
@@ -238,7 +224,9 @@ const Register = () => {
         >
           Register
         </button>
-        {error.general && <p className="text-red-900 font-bold ">{error.general}</p>}
+        {error.general && (
+          <p className='text-red-900 font-bold '>{error.general}</p>
+        )}
       </form>
     </div>
   )

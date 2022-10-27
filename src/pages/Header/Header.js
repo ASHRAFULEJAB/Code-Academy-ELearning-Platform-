@@ -104,17 +104,17 @@ const Header = () => {
             {user?.photoURL ? (
               <Link to='/profile'>
                 <div
-                data-tip={user.displayName}
-                data-for='toolTip1'
-                data-place='top'
-              >
-                <img
-                  className='h-10 w-10 rounded-3xl'
-                  src={user.photoURL}
-                  alt=''
-                />
-                <ReactTooltip id='toolTip1' />
-              </div>
+                  data-tip={user.displayName}
+                  data-for='toolTip1'
+                  data-place='top'
+                >
+                  <img
+                    className='h-10 w-10 rounded-3xl'
+                    src={user.photoURL}
+                    alt=''
+                  />
+                  <ReactTooltip id='toolTip1' />
+                </div>
               </Link>
             ) : (
               <li>
@@ -277,6 +277,17 @@ const Header = () => {
                         </Link>
                       </li>
                       <li>
+                        <div
+                          className={
+                            darkMode
+                              ? 'Header header-dark'
+                              : 'Header header-light'
+                          }
+                        >
+                          <HeaderSwitch />
+                        </div>
+                      </li>
+                      <li>
                         <Link
                           to='/faq'
                           aria-label='Product pricing'
@@ -287,25 +298,27 @@ const Header = () => {
                         </Link>
                       </li>
                       {user?.photoURL ? (
-                        <div
-                          data-tip={user.displayName}
-                          data-for='toolTip1'
-                          data-place='top'
-                        >
-                          <img
-                            className='h-10 w-10 rounded-3xl'
-                            src={user.photoURL}
-                            alt=''
-                          />
-                          <ReactTooltip id='toolTip1' />
-                        </div>
+                        <Link to='/profile'>
+                          <div
+                            data-tip={user.displayName}
+                            data-for='toolTip1'
+                            data-place='top'
+                          >
+                            <img
+                              className='h-10 w-10 rounded-3xl'
+                              src={user.photoURL}
+                              alt=''
+                            />
+                            <ReactTooltip id='toolTip1' />
+                          </div>
+                        </Link>
                       ) : (
                         <li>
                           <Link
                             to='/profile'
                             aria-label='About us'
                             title='Profile'
-                            className='font-medium tracking-wide  text-gray-700 transition-colors duration-200 hover:text-teal-400'
+                            className='font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400'
                           >
                             <FaSignInAlt />
                           </Link>

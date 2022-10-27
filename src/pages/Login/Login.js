@@ -76,6 +76,9 @@ const Login = () => {
         toast.error('Invalid user')
         setError({ ...error, general: e.message });
       })
+      .finally(() => {
+      setLoader(false)
+    })
   }
   const handleGoogleLogin = () => {
     loginWithGoogle(googleProvider)

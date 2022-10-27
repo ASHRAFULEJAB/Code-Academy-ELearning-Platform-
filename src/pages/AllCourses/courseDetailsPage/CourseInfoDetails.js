@@ -5,7 +5,7 @@ import Pdf from 'react-to-pdf'
 const ref = React.createRef()
 
 const CourseInfoDetails = ({ course }) => {
-  // console.log(course)
+ 
   const { Description, image, rating, title, total, view, id } = course
   return (
     <>
