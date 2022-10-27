@@ -186,7 +186,7 @@ const Login = () => {
       >
         <div className='space-y-4' bis_skin_checked='1'>
           <div className='space-y-2' bis_skin_checked='1'>
-            <label for='email' className='block text-sm'>
+            <label htmlFor='email' className='block text-sm'>
               Email address
             </label>
             <input
@@ -202,7 +202,7 @@ const Login = () => {
 
           <div className='space-y-2' bis_skin_checked='1'>
             <div className='flex justify-between' bis_skin_checked='1'>
-              <label for='password' className='text-sm'>
+              <label htmlFor='password' className='text-sm'>
                 Password
               </label>
               <Link
