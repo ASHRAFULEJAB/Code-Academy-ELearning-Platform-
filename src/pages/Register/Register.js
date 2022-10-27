@@ -18,6 +18,7 @@ const Register = () => {
     photoURL: '',
     email: '',
     password: '',
+    general: ""
   })
   
   
@@ -55,7 +56,8 @@ const Register = () => {
              
           })
           .catch(e => {
-          toast.error('registration incomplete')
+            toast.error('registration incomplete')
+            setError({ ...error, general: e.message });
           })
    
   }
@@ -236,6 +238,7 @@ const Register = () => {
         >
           Register
         </button>
+        {error.general && <p className="text-red-900 font-bold ">{error.general}</p>}
       </form>
     </div>
   )

@@ -21,6 +21,7 @@ const Login = () => {
   const [error, setError] = useState({
     email: '',
     password: '',
+    general:''
   })
   const handleEmailChange = (e) => {
     const email = e.target.value
@@ -72,7 +73,8 @@ const Login = () => {
       })
       .catch((e) => {
         console.log(e)
-        toast.error('Invalid')
+        toast.error('Invalid user')
+        setError({ ...error, general: e.message });
       })
   }
   const handleGoogleLogin = () => {
@@ -228,6 +230,7 @@ const Login = () => {
         >
           Log In
         </button>
+        {error.general && <p className="text-red-900 font-bold ">{error.general}</p>}
       </form>
     </div>
   )
