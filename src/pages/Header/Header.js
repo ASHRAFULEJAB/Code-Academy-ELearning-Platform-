@@ -318,7 +318,7 @@ const Header = () => {
                             to='/profile'
                             aria-label='About us'
                             title='Profile'
-                            className='font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400'
+                            className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-teal-400'
                           >
                             <FaSignInAlt />
                           </Link>
