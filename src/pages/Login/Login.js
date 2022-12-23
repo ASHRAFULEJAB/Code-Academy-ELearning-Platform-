@@ -94,7 +94,7 @@ const Login = () => {
       })
       .catch((e) => {
         console.log(e)
-        toast.loading('running')
+        toast.error('Login Error')
       })
   }
   const handleGithub = () => {
@@ -229,7 +229,7 @@ const Login = () => {
         </div>
         <button
           type='submit'
-          className='w-full px-8 py-3 font-semibold rounded-md dark:bg-violet-400 dark:text-gray-900'
+          className='w-full px-8 py-3 font-semibold rounded-md dark:bg-violet-700 dark:text-gray-100'
         >
           Log In
         </button>

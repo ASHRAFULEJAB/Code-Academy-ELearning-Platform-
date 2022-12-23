@@ -2,11 +2,21 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { FaPaypal } from 'react-icons/fa'
 import Pdf from 'react-to-pdf'
+import { useContext } from 'react'
+import { CourseContext } from '../../../contexts/CourseProvider'
 const ref = React.createRef()
 
 const CourseInfoDetails = ({ course }) => {
  
   const { Description, image, rating, title, total, view, id } = course
+  const {  loader } = useContext(CourseContext)
+  if (loader) {
+    return <div className="flex items-center justify-center space-x-2" bis_skin_checked="1">
+      <div className="w-4 h-4 rounded-full animate-pulse dark:bg-violet-400" bis_skin_checked="1"></div>
+      <div className="w-4 h-4 rounded-full animate-pulse dark:bg-violet-400" bis_skin_checked="1"></div>
+      <div className="w-4 h-4 rounded-full animate-pulse dark:bg-violet-400" bis_skin_checked="1"></div>
+    </div>
+  }
   return (
     <>
       <div 

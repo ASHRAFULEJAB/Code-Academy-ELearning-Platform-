@@ -326,26 +326,43 @@ const Header = () => {
                       )}
                     </ul>
                     <ul>
-                      <li className=' mt-3 mb-5'>
-                        <Link
-                          to='/Register'
-                          className='inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-600 hover:bg-purple-700 focus:shadow-outline focus:outline-none'
-                          aria-label='Sign up'
-                          title='register'
-                        >
-                          Register
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          to='/login'
-                          className='inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-600 hover:bg-purple-700 focus:shadow-outline focus:outline-none'
-                          aria-label='Sign up'
-                          title='login'
-                        >
-                          LogIn
-                        </Link>
-                      </li>
+                      {user?.uid ? (
+                        <>
+                          <p className='text-white'>
+                            {user?.displayName}{' '}
+                            <button
+                              className='inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-600 hover:bg-purple-700 focus:shadow-outline focus:outline-none'
+                              onClick={handleLogout}
+                            >
+                              Logout
+                            </button>{' '}
+                          </p>
+                        </>
+                      ) : (
+                        <>
+                          {' '}
+                          <li className=' mt-3 mb-5'>
+                            <Link
+                              to='/Register'
+                              className='inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-600 hover:bg-purple-700 focus:shadow-outline focus:outline-none'
+                              aria-label='Sign up'
+                              title='register'
+                            >
+                              Register
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              to='/login'
+                              className='inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-600 hover:bg-purple-700 focus:shadow-outline focus:outline-none'
+                              aria-label='Sign up'
+                              title='login'
+                            >
+                              LogIn
+                            </Link>
+                          </li>
+                        </>
+                      )}
                     </ul>
                   </nav>
                 </div>

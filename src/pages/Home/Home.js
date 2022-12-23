@@ -1,9 +1,18 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import Lottie from 'lottie-react'
 import coding from '../../assets/coding.json'
+import { CourseContext } from '../../contexts/CourseProvider'
 
 const Home = () => {
+  const {  loader } = useContext(CourseContext)
+  if (loader) {
+    return <div className="flex items-center justify-center space-x-2" bis_skin_checked="1">
+      <div className="w-4 h-4 rounded-full animate-pulse dark:bg-violet-400" bis_skin_checked="1"></div>
+      <div className="w-4 h-4 rounded-full animate-pulse dark:bg-violet-400" bis_skin_checked="1"></div>
+      <div className="w-4 h-4 rounded-full animate-pulse dark:bg-violet-400" bis_skin_checked="1"></div>
+    </div>
+  }
   return (
     <div className='px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20'>
       <div className='flex flex-col items-center justify-between w-full mb-10 lg:flex-row'>
